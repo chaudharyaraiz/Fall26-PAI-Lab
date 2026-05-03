@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Attendance System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🤖 Smart Attendance System</h1>
+
+        <!-- Upload Student Section -->
+        <div class="upload-section">
+            <h2>📸 Add New Student</h2>
+            <form id="uploadForm" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input type="text" id="studentName" placeholder="Enter student name" required>
+                    <input type="file" id="studentPhoto" accept="image/*" required>
+                    <button type="submit" class="btn upload-btn">➕ Add Student</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Students List -->
+        <div class="students-section">
+            <h2>👥 Registered Students</h2>
+            <div id="studentsList" class="students-grid">
+                <!-- Students will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Attendance Controls -->
+        <div class="controls">
+            <button onclick="startAttendance()" class="btn start">▶️ Start Attendance</button>
+            <button onclick="stopAttendance()" class="btn stop">⏹️ Stop & Close Camera</button>
+        </div>
+
+        <div class="video-container">
+            <img id="video" src="" alt="Camera Feed" style="display: none;">
+            <div id="statusMessage" class="status-message">
+                Click "Start Attendance" to begin face recognition
+            </div>
+        </div>
+
+        <div class="dashboard">
+            <a href="/present_students" class="btn dashboard-btn">📊 View Present Students</a>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
