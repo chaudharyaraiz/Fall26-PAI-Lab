@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Present Students - {{ date }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Present Students - {{ date }}</h1>
+        <a href="/" class="btn">← Back to Dashboard</a>
+        
+        {% if students %}
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Time</th>
+            </tr>
+            {% for student in students %}
+            <tr>
+                <td>{{ student.name }}</td>
+                <td>{{ student.time }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <p><strong>Total Present: {{ students|length }}</strong></p>
+        {% else %}
+        <p>No one is marked present yet.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
